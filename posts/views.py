@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Q 
-from .models import Category, Post, Author
+from .models import Category, Post, Author, Info
+
 
 def get_author(user):
     qs = Author.objects.filter(user=user)
@@ -29,7 +30,13 @@ def post (request,slug):
     return render(request, 'post.html', context)
 
 def about (request):
-    return render(request, 'about_page.html')
+    info = Info.objects.get()
+
+    context = {
+        'info': info,
+    }
+    return render(request, 'about_page.html',context)
+
 
 def search(request):
     queryset = Post.objects.all()

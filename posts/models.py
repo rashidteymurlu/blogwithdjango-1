@@ -34,4 +34,13 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+class Info(models.Model):
+    year = models.BigIntegerField()
+    about = models.TextField(max_length=200)
+    name = models.CharField(max_length=50)
+    profile_picture = models.ImageField()
+
+    def str(self):
+        return self.name
+
 
